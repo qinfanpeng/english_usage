@@ -1,0 +1,152 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+zh_CN:
+  helpers:
+    actions: "操作"
+    ok: 确认
+    mei_jing: 简易每经网
+    mei_jing_admin: 简易每经网后台管理
+    links:
+      back: "返回"
+      cancel: "取消"
+      confirm: "你确定?"
+      destroy: "删除"
+      new: "新建"
+      edit: "编辑"
+      show: 查看
+      cancel_account: 注销账号
+    titles:
+      edit: "编辑 %{model}"
+      save: "保存 %{model}"
+      new: "新建 %{model}"
+      delete: "删除 %{model}"
+
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M"
+
+  errors:
+    messages:
+      blank: 不能为空
+      too_long: 太长(最多不超过100字)
+      taken: 已被占用
+
+  will_paginate:
+    previous_label: '上一页'
+    next_label: '下一页'
+
+  article:
+    title: 标题
+    digest: 摘要
+    image: 配图
+    publisher: 发布人
+    status: 状态
+    time: 发布时间
+    content: 正文
+    column: 栏目
+    publish: 发布
+    published: 已发布
+    update: 更新文章
+    write: 写文章
+    edit: 编辑文章
+    draft: 存为草稿
+    ban: 屏蔽
+    banned: 已屏蔽
+    classify: 归属到
+    drafted: 草稿
+    created_at: 创建时间
+    all: 所有文章
+    draft_bin: 草稿箱
+    banned_bin: 屏蔽箱
+    published_bin: 发布箱
+    detail: 文章详情
+    banneds: 已屏蔽文章
+    publisheds: 已发布文章
+    drafteds: 已起草文章
+    new: 写文章
+    edit: 修改文章
+    searches: 搜索结果
+    preview: 预览
+    comments: 评论
+    flash:
+      create:
+        success: 文章发布成功
+        error: 文章发布失败
+      update:
+        success: 文章更新成功
+        error: 文章更新失败
+      ban:
+        success: 文章屏蔽成功
+        warning: 没有选择需要屏蔽的文章
+      destroy:
+        success: 文章删除成功
+        warning: 没有选择需要删除的文章
+      draft:
+        success: 文章存为草稿成功
+        warning: 没有选择需要存为草稿的文章
+      classify:
+        success: 文章归属到所选栏目成功
+        warning: 没有选择需要归属到所选栏目的文章
+        error: 没有选择要归属到的栏目
+      publish:
+        success: 文章发布成功
+
+
+  column:
+    admin: 栏目管理
+    all: 所有栏目
+    name: 名称
+    created_at: 创建时间
+    detail: 栏目详情
+    new: 新建栏目
+    create: 保存栏目
+    edit: 修改栏目
+
+  user:
+    all: 所有用户
+    admin: 用户管理  
+    created_at: 创建时间
+    email: 邮箱地址
+    last_sign_in_at: 最后登录时间
+    last_sign_in_ip: 最后登录IP
+    sign_in_count: 总登录次数
+    detail: 用户详细信息
+    login: 登录
+    logout: 退出
+    profile: 修改个人资料
+    password: 密码
+    new_password: 新密码
+    current_password: 当前密码
+    password_confirmation: 确认密码
+    new_password_confirmation: 确认新密码
+    remember_me: 记住我
+    sign_up: 注册
+    forget_password: 忘记密码？
+    send_me_email: 邮件告知我
+    change_password: 改密码
+    role: 角色
+  comment:
+    body: 评论内容
+    create: 发表评论
+    user: 作者邮箱
+    article: 所属新闻
+    created_at: 评论时间
+    all: 所有评论
+    detail: 评论详情
+    admin: 评论管理
+    update: 修改评论
+  role:
+    name: 角色名称
+    created_at: 创建时间
+    all: 所有角色
+    new: 新增角色
+    create: 创建角色
+    detail: 角色详细信息
+    edit: 编辑角色
+    update: 更新角色
+    admin: 角色管理
+
+  cancan:
+    flash:
+      cannot: 对不起，您不能进行此操作！

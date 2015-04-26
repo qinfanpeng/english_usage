@@ -1,0 +1,40 @@
+<% model_class = User %>
+<div class="page-header">
+  <h1> <%=t 'user.login'%> </h1>
+</div>
+
+<%= form_for(resource, as: resource_name, 
+                      url: session_path(resource_name), 
+                      html: { :class => "form-horizontal" }) do |f| %>
+  <div class="control-group">
+    <%= f.label t('user.email'), class: 'control-label', for: 'user_email' %>
+    <div class="controls">
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label t('user.password'), class: 'control-label', for: 'user_password' %>
+    <div class="controls">
+      <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+	  <div class="control-group">
+	    <label class='control-label'></label>
+	    <div class="controls">
+	      <label class='checkbox'>
+	        <%= f.check_box :remember_me %> 
+	        <%= t('user.remember_me') %>
+	     </label>
+	    </div>
+	  </div>
+  <% end -%>  
+
+  <div class="form-actions">
+    <%= f.submit t('user.login'), :class => 'btn btn-primary' %>
+    <%= render "devise/shared/links" %>
+  </div>
+
+<% end %>

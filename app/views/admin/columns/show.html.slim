@@ -1,0 +1,15 @@
+- model_class = Column
+div class="page-header"
+  h1=t 'column.detail'
+
+p
+  strong= t('column.name') + ':'
+  br
+  = @column.name
+
+.form-actions
+  = link_to t("helpers.links.back"), :back, :class => 'btn btn-mini'
+  '
+  = link_to t("helpers.links.edit"), edit_admin_column_path(@column), :class => 'btn btn-mini'
+  '
+  = link_to t("helpers.links.destroy"), admin_column_path(@column), method: "delete", data: { confirm: t("helpers.links.confirm") }, class: 'btn btn-danger btn-mini'

@@ -1,0 +1,29 @@
+- content_for(:title) { @article.title }
+article.article-detail
+  header
+    h1 = @article.title
+    time = l @article.created_at
+  section
+    p.digest.well
+      strong 核心提示：
+      = @article.digest
+    center
+      = image_tag @article.image.url(:large), id: 'large_image'
+    = raw @article.content
+
+h3= t('article.comments')
+- @comments.each do |comment|
+  div.article_comment
+    p = comment.body
+    p 
+      -if user_signed_in? 
+        = link_to t('helpers.links.edit'), edit_comment_path(comment), class: 'comment_delete_link'
+        '&nbsp;&nbsp;
+      = link_to t('helpers.links.destroy'), comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'comment_delete_link' 
+
+-if user_signed_in? 
+  = render 'comments/form' 
+-else
+  p
+    strong 登录后方可评论！
+    = link_to t('user.login'), new_user_session_path, :class => 'navbar-link' 

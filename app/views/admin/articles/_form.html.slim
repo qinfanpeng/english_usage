@@ -1,0 +1,39 @@
+= form_for [:admin, @article], :html => { :class => "form-horizontal", multipart: true }, validate: true do |f|
+
+  .control-group
+    = f.label t('article.column'), :class => 'control-label', for: 'article_column_id'
+    .controls.column_ids_controls
+      - all_columns.each do |column|
+        - id = column.id
+        = check_box_tag('article[column_ids][]', column.id, @article.columns.include?(column), id: "column_#{id}")
+        = f.label column.name, for: "column_"+id.to_s
+  .control-group
+    = f.label t('article.publisher'), :class => 'control-label', for: 'article_publisher'
+    .controls
+      = f.text_field :publisher, :class => 'file_field', data: {info: '请输入发布人'}
+  .control-group
+    = f.label t('article.image'), :class => 'control-label', for: 'article_image'
+    .controls
+      = f.file_field :image, :class => 'file_field', data: {info: '请选择要上传的图片文件'}
+  .control-group
+    = f.label t('article.title'), :class => 'control-label', for: 'article_title'
+    .controls
+      = f.text_field :title, :class => 'text_field', data: {info: '请输入文章标题'}
+  .control-group
+    = f.label t('article.digest'), :class => 'control-label', for: 'article_digest'
+    .controls
+      = f.text_area :digest, :class => 'text_area', rows: 4, cols: 100, data: {info: '请输入文章摘要(300字以内)'}
+  .control-group
+    = f.label t('article.content'), :class => 'control-label', for: 'article_content'
+    .controls
+      = f.kindeditor :content, width: 800, height: 400, simple_mode: true, window_onload: true
+      = f.hidden_field :status, value: 'published'
+
+
+  .form-actions
+    -if @article.new_record?
+      = f.submit t('article.publish'), :class => 'btn btn-primary'
+    -else
+      = f.submit t('article.update'), :class => 'btn btn-primary'
+    = f.submit t('article.draft'), class: 'btn', id: 'draft_btn'
+    = link_to t("helpers.links.cancel"), :back, :class => 'btn'

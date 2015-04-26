@@ -1,0 +1,153 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+
+
+@mixin gradient($start_color, $end_color)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '$start_color', endColorstr = '$end_color')
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '$start_color', endColorstr = '$end_color')"
+  background-image: -webkit-gradient(linear, center top, center bottom, from($start_color), to($end_color))
+  background-image: linear-gradient(top, $start_color, $end_color)
+  background-image: -moz-linear-gradient(top, $start_color, $end_color)
+  background-image: -ms-linear-gradient(top, $start_color, $end_color)
+  background-image: -o-linear-gradient(top, $start_color, $end_color)
+  background-image: -webkit-linear-gradient(top, $start_color, $end_color)
+  background-image: linear-gradient(top, $start_color, $end_color)
+
+$start_color: hsla(207, 80%, 47%, 1)
+$end_color: hsla(207, 80%, 42%, 1)
+
+$admin_start_color: hsla(213, 32%, 27%, 1)
+$admin_end_color: hsla(213, 32%, 15%, 1)
+
+body
+  font-family: 宋体, serif
+  a
+    text-decoration: underline
+    &:hover
+      background-color: hsla(360, 100%, 100%, 0)
+      color: #52a8ec
+    &.btn
+      text-decoration: none
+
+.navbar-inner
+  @include gradient($start_color, $end_color)
+  padding: 5px 10px
+  
+  a
+    color: white !important
+    text-decoration: none
+    font-family: 宋体, serif
+    //font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+    &:hover
+      text-decoration: underline !important
+
+  .container-fluid
+    padding-right: 2px
+    .btn-navbar
+      @include gradient(hsla(207, 80%, 44%, 1) , hsla(207, 80%, 38%, 1) )
+      border: 1px solid hsla(207, 80%, 35%, 1)
+    .btn-navbar:hover
+      @include gradient(hsla(207, 80%, 38%, 1), hsla(207, 80%, 44%, 1))
+      background-color: hsla(207, 80%, 44%, 1)
+    .nav-collapse
+      .nav
+        li
+          a
+            padding: 10px 6px 10px
+            font-family: 宋体 !important
+    
+    .in.collapse
+      ul
+        li
+          a:hover
+            background-color: hsla(207, 80%, 38%, 1)
+
+  .navbar-text
+    color: white !important
+    margin-right: 0
+    a 
+      margin-left: 5px
+      margin-right: 5px
+
+
+
+
+.navbar-inner-admin
+  height: 60px
+  @include gradient($admin_start_color, $admin_end_color)
+
+.navbar-admin
+  margin-bottom: 0px
+
+
+.container-fluid-admin
+  padding: 0px 5px 5px 5px
+  margin-top: 0px
+
+div.page-header
+  margin-top: 0px
+  margin-bottom: 10px
+  padding-bottom: 5px
+  h1
+    font-size: 15px
+    color: hsla(0, 0%, 47%, 1)
+    font-weight: 700
+    margin: 0px
+
+.btn-primary
+  margin-right: 5px
+  color: hsla(0, 100%, 100%, 1) !important
+
+a.brand
+  &:hover
+    font-weight: bold
+    text-shadow: 0 1px 0 hsla(0, 100%, 100%, 0.1), 0 0 30px hsla(0, 100%, 100%, 0.125)
+table
+  tr
+    th
+      font-weight: normal
+
+a.dropdown-toggle:hover
+  cursor: pointer
+
+.hero-unit
+  p
+    font-size: 100%
+
+.center
+  text-align: center
+
+#error_explanation
+  border: none
+
+.nav-list
+  li  
+    a
+      background-color: hsl(0, 0%, 93%)
+      text-decoration: none
+
+.pagination
+  display: inline
+  float: right
+  line-height: 12px
+  margin-top: 1px
+  ul
+    li
+      a
+        padding: 0px 7px !important
+        color: hsl(200, 100%, 40%)
+
+.navbar-form
+  margin-top: 27px
+  margin-right: -270px
+  input
+    line-height: 10px
+    width: 310px
+
+

@@ -1,0 +1,42 @@
+- content_for(:title) { @article.title}
+div class="page-header"
+  h1= t('article.detail')
+
+= render 'btn_toolbar_detail', columns: all_columns, article: @article
+
+table.table-detail
+  tr
+    th= t('article.title') + ':'
+    td= @article.title
+  tr
+    th= t('article.created_at') + ':'
+    td= l @article.created_at
+  tr
+    th= t('article.publisher') + ':'
+    td= @article.publisher
+  tr
+    th= t('article.status') + ':'
+    td= t("article.#{@article.status}")
+  tr
+    th= t('article.column') + ':'
+    td= (@article.columns.map {|column| column.name}).join(',')
+  tr
+    th= t('article.digest') + ':'
+    td= @article.digest
+- if has_image_for?(@article)
+  center= image_tag @article.image.url(:large), id: 'large_image'
+
+= raw @article.content
+
+h4= t('article.comments')
+- @comments.each do |comment|
+  div.article_comment
+    p = comment.body
+    p 
+      = link_to t('helpers.links.edit'), edit_comment_path(comment), class: 'comment_delete_link'
+      '&nbsp;&nbsp;
+      = link_to t('helpers.links.destroy'), comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'comment_delete_link'
+
+= render 'comments/form' 
+
+= render 'btn_toolbar_detail', columns: all_columns, article: @article

@@ -1,0 +1,75 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title= content_for?(:title) ? yield(:title) : "简易每经网后台管理"
+    = csrf_meta_tags
+
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+
+
+  body#body-admin
+    .navbar.navbar-fluid-top.navbar-admin
+      .navbar-inner.navbar-inner-admin
+        .container-fluid
+
+          =link_to t('helpers.mei_jing_admin'), '#', class: 'brand'
+          
+          p.navbar-text.pull-right
+            -if user_signed_in? 
+              = current_user.email 
+              = link_to t('user.profile'), edit_user_registration_path, :class => 'navbar-link' 
+              '|
+              = link_to t('user.logout'), destroy_user_session_path, method: :delete, :class => 'navbar-link' 
+            -else 
+              = link_to t('user.sign_up'), new_user_registration_path, :class => 'navbar-link'  
+              '|
+              = link_to t('user.login'), new_user_session_path, :class => 'navbar-link' 
+
+          .container-fluid.nav-collapse
+            =form_tag search_admin_articles_path, class: 'navbar-form pull-right', method: 'get' do |f|
+              input placeholder="文章全文搜索" name="query"
+
+    .container-fluid.container-fluid-admin
+      .row-fluid.row-fluid-admin
+        .span2
+          .sidebar-nav#admin-sidebar-nav
+            ul.nav.nav-list
+              /li.nav-header menu
+              li= link_to_unless_current t('article.write'), new_admin_article_path do
+                = link_to t('article.write'), new_admin_article_path, class: 'current'
+              li.divider
+              li= link_to_unless_current(t('article.all'), admin_articles_path) do
+                = link_to t('article.all'), admin_articles_path, class: 'current'
+              li= link_to_unless_current t('article.draft_bin'), drafted_admin_articles_path do
+                = link_to t('article.draft_bin'), drafted_admin_articles_path, class: 'current'
+              li= link_to_unless_current t('article.banned_bin'), banned_admin_articles_path do
+                = link_to t('article.banned_bin'), banned_admin_articles_path, class: 'current'
+              li= link_to_unless_current t('article.published_bin'), published_admin_articles_path do
+                = link_to t('article.published_bin'), published_admin_articles_path, class:'current'
+              li.divider
+              li= link_to_unless_current t('column.admin'), admin_columns_path do
+                = link_to t('column.admin'), admin_columns_path, class:'current'
+
+              li= link_to_unless_current t('role.admin'), admin_roles_path do
+                = link_to t('role.admin'), admin_roles_path, class:'current'
+
+              li= link_to_unless_current t('user.admin'), admin_users_path do
+                = link_to t('user.admin'), admin_users_path, class:'current'
+
+              li= link_to_unless_current t('comment.admin'), comments_path do
+                = link_to t('comment.admin'), comments_path, class:'current'
+
+        .span10.span10-main
+          = bootstrap_flash
+          = yield
+
+      footer
+        p &copy; Company 2013
+    = javascript_include_tag "application"
