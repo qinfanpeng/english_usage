@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+  private
+  def get_article
+    @article = Article.find(params[:id])
+  end
 end

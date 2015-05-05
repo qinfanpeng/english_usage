@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   attr_accessible :content, :digest, :image, :publisher, :status, :title, :column_ids
 
-  validates_presence_of :title, :digest, :content, :publisher, :status #, :column_ids
+  # validates_presence_of :title, :digest, :content, :publisher, :status #, :column_ids
   validates :digest, length: { maximum: 300 }
   validates :status, inclusion: %w[drafted published banned]
 
@@ -24,7 +24,4 @@ class Article < ActiveRecord::Base
   scope :published, -> { where(status: 'published') }
   default_scope { order('created_at desc') }
 
-  def to_param
-    "#{id}-#{title}"
-  end
 end

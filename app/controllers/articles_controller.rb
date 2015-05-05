@@ -1,9 +1,12 @@
 class ArticlesController < ApplicationController
 
+  before_filter :get_article
   caches_action :index, cache_path: Proc.new { |c| {page: c.params[:page]}  }
   caches_action :belong_to_column, cache_path: Proc.new { |c| {page: c.params[:page]}  }
 
   layout 'frontend'
+
+  respond_to :html, :json
 
   def index
     @articles = Article.published.includes(:columns)
@@ -12,6 +15,34 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @articles }
+    end
+  end
+
+  def new
+    @article = Article.new
+    respond_with @article
+  end
+
+  def create
+    @article = Article.new(params[:article])
+    respond_with(@article) do |format|
+      if @article.save
+        flash[:notice] = t('article.flash.create.success')
+        format.html { redirect_to @article }
+      else
+        flash[:error] = t('article.flash.create.error')
+      end
+    end
+  end
+
+  def update
+    respond_with(@article) do |format|
+      if @article.update_attributes(params[:article])
+        flash[:notice] = t('article.flash.update.success')
+        format.html { redirect_to  @article }
+      else
+        flash[:error] = t('article.flash.update.error')
+      end
     end
   end
 

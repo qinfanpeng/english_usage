@@ -43,7 +43,7 @@ MeiJing::Application.routes.draw do
    # resources :articles, only: [:index, :show]
   #end
 
-  resources :articles, only: [:index, :show]
+  resources :articles
 
   match "/columns/:id/articles", to: "articles#belong_to_column"
 

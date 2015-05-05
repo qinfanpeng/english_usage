@@ -4,12 +4,11 @@ article.article-detail
     h1 = @article.title
     time = l @article.created_at
   section
-    p.digest.well
-      strong 核心提示：
-      = @article.digest
     center
-      = image_tag @article.image.url(:large), id: 'large_image'
+      = image_tag @article.image.url(:large), id: 'large_image' unless @article.image.url == "/images/original/missing.png"
     = raw @article.content
+
+= link_to t("helpers.links.edit"), edit_article_path(@article), :class => 'btn btn-primary'
 
 h3= t('article.comments')
 - @comments.each do |comment|

@@ -169,7 +169,4 @@ class Admin::ArticlesController < ApplicationController
     expire_fragment(foreground_cache_path)
   end
 
-  def get_article
-    @article = Article.find(params[:id])
-  end
 end

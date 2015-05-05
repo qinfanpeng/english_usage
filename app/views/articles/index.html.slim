@@ -2,15 +2,9 @@
 - @articles.each do |article|
   article.article-digest
       h1
-        = link_to truncate(article.title, length: 20), article_path(article)
+        = link_to truncate(article.content, length: 20), article_path(article)
       time = l article.created_at
-      .image_digest
-        - if has_image_for?(article)
-          = link_to (image_tag article.image.url(:thumb), class: 'thumbs pull-left'), article_path(article)
-          p.with_image = truncate article.digest, length: 200
-        -else
-          p = truncate article.digest, length: 200
-
-
 
 = will_paginate @articles
+
+= link_to_unless_current t('article.write'), new_article_path, class: 'btn btn-primary'

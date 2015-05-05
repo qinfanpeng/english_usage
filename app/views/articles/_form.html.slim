@@ -1,0 +1,27 @@
+= form_for @article, :html => { :class => "form-horizontal", multipart: true }, validate: true do |f|
+
+  .control-group
+    = f.label t('article.column'), :class => 'control-label', for: 'article_column_id'
+    .controls.column_ids_controls
+      - all_columns.each do |column|
+        - id = column.id
+        = check_box_tag('article[column_ids][]', column.id, @article.columns.include?(column), id: "column_#{id}")
+        = f.label column.name, for: "column_"+id.to_s
+  .control-group
+    = f.label t('article.content'), :class => 'control-label', for: 'article_content'
+    .controls
+      = f.kindeditor :content, width: 800, height: 100, simple_mode: true, window_onload: true
+      = f.hidden_field :status, value: 'published'
+
+  .control-group
+    = f.label t('article.image'), :class => 'control-label', for: 'article_image'
+    .controls
+      = f.file_field :image, :class => 'file_field', data: {info: '请选择要上传的图片文件'}
+
+  .form-actions
+    -if @article.new_record?
+      = f.submit t('article.publish'), :class => 'btn btn-primary'
+    -else
+      = f.submit t('article.update'), :class => 'btn btn-primary'
+    = f.submit t('article.draft'), class: 'btn', id: 'draft_btn'
+    = link_to t("helpers.links.cancel"), :back, :class => 'btn'

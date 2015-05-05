@@ -5,8 +5,8 @@ zh_CN:
   helpers:
     actions: "操作"
     ok: 确认
-    mei_jing: 简易每经网
-    mei_jing_admin: 简易每经网后台管理
+    mei_jing: 英语口语词典系统
+    mei_jing_admin: 英语口语词典系统后台管理
     links:
       back: "返回"
       cancel: "取消"
@@ -43,54 +43,54 @@ zh_CN:
     publisher: 发布人
     status: 状态
     time: 发布时间
-    content: 正文
-    column: 栏目
-    publish: 发布
+    content: 词条正文
+    column: 分类
+    publish: 创建词条
     published: 已发布
-    update: 更新文章
-    write: 写文章
-    edit: 编辑文章
+    update: 更新词条
+    write: 创建词条
+    edit: 编辑词条
     draft: 存为草稿
     ban: 屏蔽
     banned: 已屏蔽
     classify: 归属到
     drafted: 草稿
     created_at: 创建时间
-    all: 所有文章
+    all: 所有词条
     draft_bin: 草稿箱
     banned_bin: 屏蔽箱
     published_bin: 发布箱
-    detail: 文章详情
-    banneds: 已屏蔽文章
-    publisheds: 已发布文章
-    drafteds: 已起草文章
-    new: 写文章
-    edit: 修改文章
+    detail: 词条详情
+    banneds: 已屏蔽词条
+    publisheds: 已发布词条
+    drafteds: 已起草词条
+    new: 写词条
+    edit: 修改词条
     searches: 搜索结果
     preview: 预览
-    comments: 评论
+    comments: 释义
     flash:
       create:
-        success: 文章发布成功
-        error: 文章发布失败
+        success: 词条发布成功
+        error: 词条发布失败
       update:
-        success: 文章更新成功
-        error: 文章更新失败
+        success: 词条更新成功
+        error: 词条更新失败
       ban:
-        success: 文章屏蔽成功
-        warning: 没有选择需要屏蔽的文章
+        success: 词条屏蔽成功
+        warning: 没有选择需要屏蔽的词条
       destroy:
-        success: 文章删除成功
-        warning: 没有选择需要删除的文章
+        success: 词条删除成功
+        warning: 没有选择需要删除的词条
       draft:
-        success: 文章存为草稿成功
-        warning: 没有选择需要存为草稿的文章
+        success: 词条存为草稿成功
+        warning: 没有选择需要存为草稿的词条
       classify:
-        success: 文章归属到所选栏目成功
-        warning: 没有选择需要归属到所选栏目的文章
+        success: 词条归属到所选栏目成功
+        warning: 没有选择需要归属到所选栏目的词条
         error: 没有选择要归属到的栏目
       publish:
-        success: 文章发布成功
+        success: 词条发布成功
 
 
   column:
@@ -127,15 +127,15 @@ zh_CN:
     change_password: 改密码
     role: 角色
   comment:
-    body: 评论内容
-    create: 发表评论
+    body: 释义内容
+    create: 添加释义
     user: 作者邮箱
     article: 所属新闻
-    created_at: 评论时间
-    all: 所有评论
-    detail: 评论详情
-    admin: 评论管理
-    update: 修改评论
+    created_at: 释义时间
+    all: 所有释义
+    detail: 释义详情
+    admin: 释义管理
+    update: 修改释义
   role:
     name: 角色名称
     created_at: 创建时间
