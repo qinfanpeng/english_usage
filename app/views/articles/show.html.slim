@@ -1,24 +1,21 @@
 - content_for(:title) { @article.title }
 article.article-detail
-  header
-    h1 = @article.title
-    time = l @article.created_at
   section
-    center
-      = image_tag @article.image.url(:large), id: 'large_image' unless @article.image.url == "/images/original/missing.png"
+    = image_tag @article.image.url(:large), id: 'large_image', class: 'pull-right' unless @article.image.url == "/images/original/missing.png"
     = raw @article.content
 
-= link_to t("helpers.links.edit"), edit_article_path(@article), :class => 'btn btn-primary'
+= link_to '编辑词条', edit_article_path(@article), :class => 'btn btn-primary btn-article-edit'
 
 h3= t('article.comments')
-- @comments.each do |comment|
-  div.article_comment
-    p = comment.body
-    p 
-      -if user_signed_in? 
-        = link_to t('helpers.links.edit'), edit_comment_path(comment), class: 'comment_delete_link'
-        '&nbsp;&nbsp;
-      = link_to t('helpers.links.destroy'), comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'comment_delete_link' 
+ol
+  - @comments.each do |comment|
+    li.article_comment
+      p = comment.body
+      p
+        -if user_signed_in?
+          = link_to t('helpers.links.edit'), edit_comment_path(comment), class: 'comment_delete_link'
+          '&nbsp;&nbsp;
+        = link_to t('helpers.links.destroy'), comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'comment_delete_link'
 
 -if user_signed_in? 
   = render 'comments/form' 

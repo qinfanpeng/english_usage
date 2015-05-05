@@ -1,7 +1,7 @@
-class CommentsController < ApplicationController
+class Admin::CommentsController < ApplicationController
 
   load_and_authorize_resource
-  layout 'frontend'
+  layout 'admin'
   # GET /comments
   # GET /comments.json
   def index

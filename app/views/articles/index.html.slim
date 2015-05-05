@@ -6,6 +6,11 @@
   article.article-digest
       h1
         = link_to truncate(article.content, length: 20), article_path(article)
+      ol
+        - article.comments.each do |comment|
+          li
+            p = comment.body
+
       time = l article.created_at
 
 = will_paginate @articles

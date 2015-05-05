@@ -33,6 +33,7 @@ MeiJing::Application.routes.draw do
     end
     resources :users
     resources :roles
+    resources :comments
   end
 
   #scope :module => "admin" do

@@ -1,8 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_filter :get_article, except: [:search]
-  caches_action :index, cache_path: Proc.new { |c| {page: c.params[:page]}  }
-  caches_action :belong_to_column, cache_path: Proc.new { |c| {page: c.params[:page]}  }
+  before_filter :get_article, only: [:update, :edit, :show]
 
   layout 'frontend'
 
