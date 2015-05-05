@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_filter :get_article
+  before_filter :get_article, except: [:search]
   caches_action :index, cache_path: Proc.new { |c| {page: c.params[:page]}  }
   caches_action :belong_to_column, cache_path: Proc.new { |c| {page: c.params[:page]}  }
 
@@ -65,4 +65,17 @@ class ArticlesController < ApplicationController
       .paginate(:page => params[:page], per_page: 8)
     render :index
   end
+
+  def search
+    search = Article.search do
+      fulltext params[:query] do
+        boost_fields :title => 2.0
+      end
+      order_by :created_at, :desc
+      paginate page: params[:page]
+    end
+    @articles = search.results
+    render :index
+  end
+
 end

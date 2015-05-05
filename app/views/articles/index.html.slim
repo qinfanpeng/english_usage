@@ -1,3 +1,6 @@
+=form_tag search_articles_path, class: 'query-form', method: 'get' do |f|
+  input placeholder="全站搜索" name="query" class="search-query span8"
+  button type="submit" class="btn btn-search" 搜索
 
 - @articles.each do |article|
   article.article-digest
