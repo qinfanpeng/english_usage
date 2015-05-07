@@ -7,6 +7,8 @@ class Article < ActiveRecord::Base
 
   has_and_belongs_to_many :columns
   has_many :comments
+  has_many :example_sentences
+
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>", large: '450x450>' }
 
   self.per_page = 12
@@ -16,6 +18,12 @@ class Article < ActiveRecord::Base
     time :created_at, :updated_at
     text :columns do
       columns.map { |column| column.name }
+    end
+    text :comments do
+      comments.map { |comment| comment.body }
+    end
+    text :example_sentences do
+      example_sentences.map(&:content)
     end
   end
 

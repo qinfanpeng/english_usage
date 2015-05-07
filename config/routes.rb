@@ -1,7 +1,8 @@
 MeiJing::Application.routes.draw do
   
   resources :comments
-  
+  resources :example_sentences
+
   devise_for :users
 
   root to: 'articles#index'

@@ -1,0 +1,13 @@
+= form_for @example_sentence, :html => { :class => "form-horizontal new_comment" }, validate: true do |f|
+  
+  .control-group
+    = f.label '例句内容', :class => 'control-label', for: 'comment_body'
+    .controls
+      = f.text_area :content, :class => 'text_field',rows: 4, cols: 400, data: {info: '请输入例句内容'}
+  = f.hidden_field :article_id
+  
+
+  -if @example_sentence.new_record?
+    = f.submit '新加例句', :class => 'btn btn-primary btn-mini'
+  -else
+    = f.submit '修改例句', :class => 'btn btn-primary btn-mini'

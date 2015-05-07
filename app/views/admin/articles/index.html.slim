@@ -20,7 +20,7 @@ div class="page-header"
       - @articles.each do |article|
         tr
           td= check_box_tag('ids[]', article.id, false, class: 'article_ids')
-          td= link_to truncate(article.title, length: 10), admin_article_path(article)
+          td= link_to truncate(article.content, length: 10), admin_article_path(article)
           td= truncate article.digest, length: 50
           td= article.publisher
           td= t("article.#{article.status}")
